@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Just a Question 💗</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            overflow: hidden;
+
+            font-family: Arial, sans-serif;
+
+            padding: 20px;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    #ffd6e7,
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 80% 80%,
+                    #d8c7ff,
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #fff1f7,
+                    #f5efff
+                );
+        }
+
+
+        /* =========================
+           FLOATING HEARTS
+        ========================= */
+
+        .floating-heart {
+            position: fixed;
+
+            bottom: -50px;
+
+            color: rgba(255, 92, 138, 0.35);
+
+            font-size: 28px;
+
+            animation: floatUp linear infinite;
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+        .floating-heart:nth-child(1) {
+            left: 10%;
+            animation-duration: 7s;
+        }
+
+        .floating-heart:nth-child(2) {
+            left: 25%;
+            animation-duration: 9s;
+            animation-delay: 2s;
+        }
+
+        .floating-heart:nth-child(3) {
+            left: 50%;
+            animation-duration: 6s;
+            animation-delay: 1s;
+        }
+
+        .floating-heart:nth-child(4) {
+            left: 75%;
+            animation-duration: 8s;
+            animation-delay: 3s;
+        }
+
+        .floating-heart:nth-child(5) {
+            left: 90%;
+            animation-duration: 10s;
+            animation-delay: 1s;
+        }
+
+        @keyframes floatUp {
+
+            from {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            to {
+                transform:
+                    translateY(-110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================
+           MAIN CARD
+        ========================= */
+
+        .question {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: min(500px, 100%);
+
+            min-height: 470px;
+
+            padding: 60px 45px;
+
+            text-align: center;
+
+            background:
+                rgba(255, 255, 255, 0.50);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.85);
+
+            border-radius: 35px;
+
+            backdrop-filter: blur(22px);
+
+            -webkit-backdrop-filter: blur(22px);
+
+            box-shadow:
+                0 35px 80px
+                rgba(130, 80, 130, 0.22),
+
+                inset 0 1px 0 white;
+
+            animation:
+                cardIn 0.8s ease;
+        }
+
+        @keyframes cardIn {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(40px)
+                    scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        /* =========================
+           HEART
+        ========================= */
+
+        .heart {
+
+            font-size: 80px;
+
+            color: #ff5c8a;
+
+            margin-bottom: 10px;
+
+            animation:
+                heartbeat 1.5s infinite;
+
+            text-shadow:
+                0 0 25px
+                rgba(255, 92, 138, 0.45);
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.15);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.1);
+            }
+        }
+
+
+        /* =========================
+           TEXT
+        ========================= */
+
+        .eyebrow {
+
+            color: #b77a92;
+
+            font-size: 15px;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 15px;
+        }
+
+        h1 {
+
+            color: #4b3040;
+
+            font-family: Georgia, serif;
+
+            font-size: 44px;
+
+            line-height: 1.15;
+
+            margin-bottom: 42px;
+        }
+
+
+        /* =========================
+           BUTTON AREA
+        ========================= */
+
+        .btn-row {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 22px;
+
+            min-height: 60px;
+
+            position: relative;
+        }
+
+
+        button {
+
+            border: none;
+
+            padding:
+                16px
+                38px;
+
+            border-radius: 50px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        /* =========================
+           YES BUTTON
+        ========================= */
+
+        #yes {
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff4f87,
+                    #ff91b3
+                );
+
+            box-shadow:
+                0 10px 30px
+                rgba(255, 79, 135, 0.38);
+        }
+
+        #yes:hover {
+
+            transform:
+                translateY(-4px)
+                scale(1.06);
+
+            box-shadow:
+                0 15px 40px
+                rgba(255, 79, 135, 0.55);
+        }
+
+
+        /* =========================
+           NO BUTTON
+        ========================= */
+
+        #no {
+
+            color: #8b6575;
+
+            background:
+                rgba(255, 255, 255, 0.8);
+
+            border:
+                1px solid
+                rgba(180, 130, 150, 0.25);
+
+            position: relative;
+
+            z-index: 5;
+        }
+
+        #no:hover {
+
+            background: white;
+
+            box-shadow:
+                0 8px 20px
+                rgba(100, 60, 90, 0.12);
+        }
+
+
+        /* =========================
+           HIGHLIGHTED MESSAGE
+        ========================= */
+
+        .hint {
+
+            min-height: 58px;
+
+            margin-top: 28px;
+
+            padding:
+                14px
+                22px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            border-radius: 18px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            color: #c92f65;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255, 220, 233, 0.95),
+                    rgba(255, 235, 244, 0.85)
+                );
+
+            border:
+                2px solid
+                rgba(255, 105, 150, 0.35);
+
+            box-shadow:
+                0 8px 25px
+                rgba(255, 92, 138, 0.20),
+
+                0 0 18px
+                rgba(255, 92, 138, 0.12);
+
+            opacity: 0;
+
+            transform:
+                scale(0.85);
+
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease;
+        }
+
+
+        .hint.show {
+
+            opacity: 1;
+
+            transform:
+                scale(1);
+
+            animation:
+                hintPop 0.4s ease;
+        }
+
+
+        @keyframes hintPop {
+
+            0% {
+                transform: scale(0.8);
+            }
+
+            60% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+
+        /* =========================
+           SUCCESS SCREEN
+        ========================= */
+
+        .success {
+
+            display: none;
+        }
+
+        .success h1 {
+
+            color: #ff4f87;
+
+            margin-bottom: 20px;
+        }
+
+        .success p {
+
+            color: #765467;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+        }
+
+        .big-heart {
+
+            font-size: 100px;
+
+            animation:
+                heartbeat 1s infinite;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            body {
+
+                padding: 15px;
+            }
+
+            .question {
+
+                width: 100%;
+
+                min-height: auto;
+
+                padding:
+                    45px
+                    20px;
+
+                border-radius: 28px;
+            }
+
+            .heart {
+
+                font-size: 65px;
+            }
+
+            .eyebrow {
+
+                font-size: 12px;
+
+                letter-spacing: 2px;
+            }
+
+            h1 {
+
+                font-size: 32px;
+
+                margin-bottom: 32px;
+            }
+
+            .btn-row {
+
+                gap: 12px;
+            }
+
+            button {
+
+                padding:
+                    14px
+                    25px;
+
+                font-size: 15px;
+            }
+
+            .hint {
+
+                font-size: 15px;
+
+                margin-top: 24px;
+
+                padding:
+                    12px
+                    15px;
+            }
+        }
+
+
+        /* =========================
+           SMALL PHONES
+        ========================= */
+
+        @media (max-width: 380px) {
+
+            body {
+
+                padding: 10px;
+            }
+
+            .question {
+
+                padding:
+                    35px
+                    15px;
+            }
+
+            .heart {
+
+                font-size: 55px;
+            }
+
+            h1 {
+
+                font-size: 27px;
+            }
+
+            .btn-row {
+
+                gap: 8px;
+            }
+
+            button {
+
+                padding:
+                    12px
+                    20px;
+
+                font-size: 14px;
+            }
+
+            .hint {
+
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- FLOATING HEARTS -->
+
+    <div class="floating-heart">♥</div>
+    <div class="floating-heart">♡</div>
+    <div class="floating-heart">♥</div>
+    <div class="floating-heart">♡</div>
+    <div class="floating-heart">♥</div>
+
+
+    <!-- QUESTION CARD -->
+
+    <div
+        class="question"
+        id="question">
+
+        <div class="heart">
+            ♡
+        </div>
+
+        <p class="eyebrow">
+            just a little question...
+        </p>
+
+        <h1>
+            Would you love me?
+        </h1>
+
+        <div
+            class="btn-row"
+            id="btnRow">
+
+            <button id="yes">
+                Yes 💗
+            </button>
+
+            <button id="no">
+                No
+            </button>
+
+        </div>
+
+        <p
+            class="hint"
+            id="hint">
+        </p>
+
+    </div>
+
+
+    <!-- SUCCESS CARD -->
+
+    <div
+        class="question success"
+        id="success">
+
+        <div class="big-heart">
+            💖
+        </div>
+
+        <h1>
+            YAYYY! 🥹
+        </h1>
+
+        <p>
+            I knew you'd say yes! 💕
+            <br>
+            You just made my day.
+        </p>
+
+    </div>
+
+
+    <script>
+
+        const yes =
+            document.getElementById("yes");
+
+        const no =
+            document.getElementById("no");
+
+        const hint =
+            document.getElementById("hint");
+
+        const question =
+            document.getElementById("question");
+
+        const success =
+            document.getElementById("success");
+
+        const btnRow =
+            document.getElementById("btnRow");
+
+
+        let noClicks = 0;
+
+
+        /* =========================
+           YES BUTTON
+        ========================= */
+
+        yes.addEventListener(
+            "click",
+            () => {
+
+                question.style.display =
+                    "none";
+
+                success.style.display =
+                    "block";
+
+            }
+        );
+
+
+        /* =========================
+           MOVE NO BUTTON
+        ========================= */
+
+        function moveNoButton() {
+
+            const rowRect =
+                btnRow.getBoundingClientRect();
+
+            const buttonRect =
+                no.getBoundingClientRect();
+
+
+            /*
+                Keep the button inside
+                the button area.
+            */
+
+            const maxX =
+                Math.max(
+                    40,
+                    (rowRect.width -
+                        buttonRect.width) / 2
+                );
+
+
+            const maxY = 70;
+
+
+            const x =
+                Math.random()
+                * maxX * 2
+                - maxX;
+
+
+            const y =
+                Math.random()
+                * maxY * 2
+                - maxY;
+
+
+            no.style.transform =
+                `translate(${x}px, ${y}px)`;
+        }
+
+
+        /* =========================
+           NO BUTTON CLICK
+        ========================= */
+
+        no.addEventListener(
+            "click",
+            () => {
+
+                noClicks++;
+
+
+                const messages = [
+
+                    "Are you sure? 🥺",
+
+                    "Think again... 💔",
+
+                    "Really? 😭",
+
+                    "Come onnn... 🥹",
+
+                    "Please? 💗",
+
+                    "You can't escape the question 😂"
+
+                ];
+
+
+                hint.textContent =
+                    messages[
+                        Math.min(
+                            noClicks - 1,
+                            messages.length - 1
+                        )
+                    ];
+
+
+                /* Restart hint animation */
+
+                hint.classList.remove(
+                    "show"
+                );
+
+
+                void hint.offsetWidth;
+
+
+                hint.classList.add(
+                    "show"
+                );
+
+
+                /* Make YES bigger */
+
+                yes.style.transform =
+                    `scale(${
+                        Math.min(
+                            1 + noClicks * 0.08,
+                            1.5
+                        )
+                    })`;
+
+
+                /*
+                    IMPORTANT FIX:
+
+                    Move the No button
+                    immediately after click.
+
+                    This fixes the bug where
+                    it could get stuck.
+                */
+
+                if (
+                    window.matchMedia(
+                        "(hover: hover)"
+                    ).matches
+                ) {
+
+                    setTimeout(
+                        moveNoButton,
+                        80
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           MOUSE ENTER
+        ========================= */
+
+        no.addEventListener(
+            "mouseenter",
+            () => {
+
+                /*
+                    Start dodging after
+                    the user has clicked No
+                    twice.
+                */
+
+                if (
+                    noClicks >= 2 &&
+                    window.matchMedia(
+                        "(hover: hover)"
+                    ).matches
+                ) {
+
+                    moveNoButton();
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           TOUCH DEVICES
+        ========================= */
+
+        /*
+            On mobile there is no
+            mouse-hover dodging.
+
+            The No button stays usable.
+        */
+
+        no.addEventListener(
+            "touchstart",
+            () => {
+
+                no.style.transform =
+                    "translate(0, 0)";
+
+            },
+            {
+                passive: true
+            }
+        );
+
+    </script>
+
+</body>
+</html>
